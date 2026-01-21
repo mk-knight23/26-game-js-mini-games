@@ -31,6 +31,6 @@ npm run dev
 Additional technical details can be found in the [docs/](docs/) directory.
 
 ## Live Deployment
-GitHub Pages: [Pending]
-Status: 🟡 Initializing Pipeline
+GitHub Pages: [https://mk-knight23.github.io/11-js-mini-games/](https://mk-knight23.github.io/11-js-mini-games/)
+Status: 🟢 Live
 Last Updated: 2026-01-21
