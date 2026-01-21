@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
     plugins: [react()],
-    base: './',
+    base: '/11-js-mini-games/',
     build: {
         outDir: 'dist',
         rollupOptions: {

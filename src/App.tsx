@@ -17,22 +17,22 @@ function App() {
 
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
-            {/* Header */}
-            <header className="p-6 flex justify-between items-center border-b border-slate-200 bg-white shadow-sm sticky top-0 z-50">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 bg-indigo-600 rounded-xl text-white">
-                        <Zap className="w-6 h-6" />
+            {/* Premium Header */}
+            <header className="p-6 flex justify-between items-center border-b border-slate-100 bg-white/80 backdrop-blur-xl shadow-sm sticky top-0 z-50">
+                <div className="flex items-center gap-4">
+                    <div className="p-3 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl text-white shadow-xl shadow-indigo-500/20">
+                        <Zap className="w-7 h-7" />
                     </div>
                     <div>
-                        <h1 className="text-xl font-black tracking-tight">FUN<span className="text-indigo-600">PROJECTS</span></h1>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">MK Mini Apps Collection</p>
+                        <h1 className="text-2xl font-black tracking-tighter">FUN<span className="text-indigo-600">_LABS</span></h1>
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] leading-none">MK Mini Apps Collection</p>
                     </div>
                 </div>
 
                 {activeTab !== 'hub' && (
                     <button
                         onClick={() => setActiveTab('hub')}
-                        className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-full text-sm font-bold transition-all active:scale-95"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-full text-sm font-black transition-all active:scale-95"
                     >
                         <ArrowLeft className="w-4 h-4" /> Back to Hub
                     </button>
