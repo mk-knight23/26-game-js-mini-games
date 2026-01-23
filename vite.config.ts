@@ -1,9 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
-    base: '/11-js-mini-games/',
+    plugins: [
+        react(),
+        tailwindcss(),
+    ],
+    base: process.env.VERCEL || process.env.NETLIFY ? './' : '/11-js-mini-games/',
     build: {
         outDir: 'dist',
         rollupOptions: {

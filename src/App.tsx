@@ -109,7 +109,7 @@ function App() {
 
             {/* Footer */}
             <footer className="p-8 text-center border-t border-slate-200 bg-white">
-                <p className="text-xs font-bold text-slate-400 tracking-[0.3em] uppercase">© 2024 MK-FUN-PROJECTS • 30/30 REBUILD</p>
+                <p className="text-xs font-bold text-slate-400 tracking-[0.3em] uppercase">© 2026 Fun Labs • Modernization Engineering Wave</p>
             </footer>
         </div>
     );
