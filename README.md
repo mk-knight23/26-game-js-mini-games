@@ -1,43 +1,43 @@
-# 11-js-mini-games
+# Mini Apps Collection
 
-✨ A curated collection of interactive JavaScript mini-games and utilities. From classic calculators to dynamic dark-mode toggles, this repository showcases essential web interactions and React logic.
+A lightweight collection of 5 functional mini-apps built with vanilla HTML, CSS, and JavaScript.
 
-## Included Modules
-- 🎨 **01-background-color-changer**: Dynamic theme experimentation.
-- 🔔 **02-popup-notification**: Sophisticated UI alerting system.
-- ⏳ **03-countdown-timer**: Precision event scheduling.
-- 🌓 **04-dark-mode-toggle**: Dark/Light theme mastery.
-- 🧮 **05-calculator**: High-fidelity computational interface.
+## Apps Included
+
+| # | App | Description |
+|---|-----|-------------|
+| 1 | Color Changer | Generate random background colors with fun messages |
+| 2 | Popup Notify | Toast notification system demo |
+| 3 | Countdown | Precision event timer |
+| 4 | Dark Mode | Theme switching utility |
+| 5 | Calculator | Full-featured calculator |
 
 ## Features
-- 🚀 Interactive Mini-Exhibits
-- 📱 Fully Responsive Interaction Design
-- ⚛️ Core Logic Powered by React 18
-- ⚡ Engineered for Speed with Vite 6
+
+- Zero dependencies - pure vanilla web technologies
+- Responsive design for all screen sizes
+- Smooth transitions and animations
+- No build step required
+- Works offline
+
+## Quick Start
+
+Simply open `index.html` in any modern browser:
+
+```bash
+open index.html
+```
 
 ## Tech Stack
-- **Frontend**: React 18, Tailwind CSS v4
-- **Build Tool**: Vite 6
-- **Icons**: Lucide React
-- **Animations**: Framer Motion
 
-## Documentation
-- [Architecture Overview](docs/ARCHITECTURE.md)
-- [Design System](docs/DESIGN.md)
-- [Deployment Guide](docs/DEPLOY.md)
+- HTML5 - Semantic markup
+- CSS3 - Custom properties, flexbox, grid, animations
+- JavaScript - Vanilla ES6+
+- No frameworks
 
-## Live Deployment
-- **GitHub Pages**: [https://mk-knight23.github.io/11-js-mini-games/](https://mk-knight23.github.io/11-js-mini-games/)
-- **Status**: 🟢 Live
-- **Modernized**: 2026-01-23
+## Deployment
 
----
-*Maintained by [Kazi Musharraf](https://github.com/mk-knight23)*
-
-## 🌐 Live Deployments
-
-- Vercel: https://11-js-mini-games.vercel.app
-- GitHub Pages: https://mk-knight23.github.io/11-js-mini-games/
-
-Status: 🟢 Deployments Live  
-Last Updated: 2026-01-23
+Deploy `index.html` to any static hosting:
+- GitHub Pages
+- Netlify (drag & drop)
+- Vercel

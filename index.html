@@ -1,59 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#4f46e5" />
-
-    <!-- Primary Meta Tags -->
-    <title>Fun Labs | Premium Mini-App Suite</title>
-    <meta name="title" content="Fun Labs | Premium Mini-App Suite">
-    <meta name="description"
-        content="Explore Fun Labs 2026 – a premium collection of interactive mini-apps including color changers, precision timers, and minimalist utilities. Built with React 19 and Tailwind v4.">
-    <meta name="keywords"
-        content="mini apps, js games, react 19, tailwind v4, functional lab, web utilities, kazi musharraf">
-    <meta name="author" content="Kazi Musharraf">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mk-knight23.github.io/11-js-mini-games/">
-    <meta property="og:title" content="Fun Labs | Premium Mini-App Suite">
-    <meta property="og:description"
-        content="Dive into a sandbox of precision-engineered web experiments and mini-apps.">
-    <meta property="og:image" content="https://mk-knight23.github.io/11-js-mini-games/fun.png">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://mk-knight23.github.io/11-js-mini-games/">
-    <meta name="twitter:title" content="Fun Labs | Premium Mini-App Suite">
-    <meta name="twitter:description"
-        content="Dive into a sandbox of precision-engineered web experiments and mini-apps.">
-    <meta name="twitter:image" content="https://mk-knight23.github.io/11-js-mini-games/fun.png">
-
-    <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="manifest" href="/manifest.json" />
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Fun Labs",
-        "description": "Premium Web Laboratory of Mini-Apps",
-        "url": "https://mk-knight23.github.io/11-js-mini-games/"
-    }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Apps Hub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #6366f1; --bg: #f8fafc; --card: #fff; --text: #0f172a; --muted: #64748b; --border: #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        header { background: var(--card); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), #8b5cf6); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .logo h1 { font-size: 1.5rem; font-weight: 800; }
+        .logo h1 span { color: var(--primary); }
+        .back-btn { display: none; padding: 0.625rem 1.25rem; background: var(--bg); border: 1px solid var(--border); border-radius: 9999px; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .app-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.5rem; padding: 1.5rem; cursor: pointer; transition: all 0.3s; text-align: left; }
+        .app-card:hover { border-color: var(--primary); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .app-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.5rem; }
+        .app-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .app-card p { color: var(--muted); font-size: 0.875rem; }
+        .app-view { display: none; background: var(--card); border-radius: 2rem; border: 1px solid var(--border); padding: 3rem; max-width: 500px; margin: 2rem auto; text-align: center; }
+        .app-view.active { display: block; }
+        .app-view h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; }
+        .divider { width: 64px; height: 4px; background: var(--primary); border-radius: 2px; margin: 0 auto 1.5rem; }
+        .color-btn { padding: 1rem 2rem; font-size: 1.125rem; font-weight: 600; background: linear-gradient(135deg, #f43f5e, #3b82f6, #10b981, #f59e0b); background-size: 300% 300%; color: white; border: none; border-radius: 1rem; cursor: pointer; animation: gradientShift 8s ease infinite; }
+        .color-btn:hover { transform: scale(1.05); }
+        @keyframes gradientShift { 0%,100%{background-position:0%50%} 50%{background-position:100%50%} }
+        .popup-demo { background: var(--bg); border-radius: 1rem; padding: 1.5rem; min-height: 200px; display: flex; flex-direction: column; gap: 0.75rem; }
+        .toast { padding: 0.875rem 1rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 500; animation: slideIn 0.3s ease; }
+        .toast.success { background: #dcfce7; color: #166534; }
+        .toast.error { background: #fee2e2; color: #991b1b; }
+        .toast.info { background: #dbeafe; color: #1e40af; }
+        @keyframes slideIn { from{opacity:0;transform:translateX(-20px)} to{opacity:1;transform:translateX(0)} }
+        .popup-controls { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+        .popup-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 0.5rem; background: white; cursor: pointer; font-size: 0.875rem; }
+        .countdown-display { font-size: 4rem; font-weight: 700; font-variant-numeric: tabular-nums; margin: 1.5rem 0; }
+        .countdown-input { padding: 0.75rem 1rem; border: 2px solid var(--border); border-radius: 0.75rem; font-size: 1rem; width: 140px; text-align: center; margin-bottom: 1rem; }
+        .countdown-controls { display: flex; gap: 0.5rem; justify-content: center; }
+        .countdown-btn { padding: 0.75rem 1.5rem; border: none; border-radius: 0.75rem; font-weight: 600; cursor: pointer; }
+        .countdown-btn.primary { background: var(--primary); color: white; }
+        .countdown-btn.secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+        .dark-demo { background: var(--bg); border-radius: 1rem; padding: 2rem; margin-bottom: 1rem; }
+        .toggle-switch { position: relative; width: 64px; height: 32px; margin: 0 auto; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #cbd5e1; border-radius: 32px; transition: 0.3s; }
+        .toggle-slider::before { content: ''; position: absolute; height: 24px; width: 24px; left: 4px; bottom: 4px; background: white; border-radius: 50%; transition: 0.3s; }
+        .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(32px); }
+        .calculator { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; max-width: 280px; margin: 0 auto; }
+        .calc-display { grid-column: span 4; padding: 1rem; background: var(--bg); border-radius: 0.75rem; font-size: 2rem; font-weight: 700; text-align: right; margin-bottom: 0.5rem; }
+        .calc-btn { padding: 1rem; border: none; border-radius: 0.75rem; font-size: 1.25rem; font-weight: 600; cursor: pointer; }
+        .calc-btn:active { transform: scale(0.95); }
+        .calc-btn.number { background: var(--bg); }
+        .calc-btn.number:hover { background: var(--border); }
+        .calc-btn.operator { background: var(--primary); color: white; }
+        .calc-btn.equals { background: #10b981; color: white; }
+        .calc-btn.clear { background: #ef4444; color: white; }
+        footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        @media (max-width: 640px) { header { padding: 1rem; } main { padding: 1rem; } .app-view { padding: 2rem 1.5rem; margin: 1rem; } .countdown-display { font-size: 3rem; } }
+    </style>
 </head>
-
-<body class="bg-slate-50 text-slate-900 select-none antialiased">
-    <a href="#root"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg">Skip
-        to main</a>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">★</div>
+            <h1>FUN<span>_LABS</span></h1>
+        </div>
+        <button class="back-btn" onclick="showHub()">← Back</button>
+    </header>
+    <main>
+        <div id="hub-view" class="app-grid">
+            <div class="app-card" onclick="showApp('color')">
+                <div class="app-icon" style="background: #fce7f3;">🎨</div>
+                <h3>Color Changer</h3>
+                <p>Generate random colors with fun messages</p>
+            </div>
+            <div class="app-card" onclick="showApp('popup')">
+                <div class="app-icon" style="background: #dbeafe;">🔔</div>
+                <h3>Popup Notify</h3>
+                <p>Toast notification system demo</p>
+            </div>
+            <div class="app-card" onclick="showApp('countdown')">
+                <div class="app-icon" style="background: #d1fae5;">⏱️</div>
+                <h3>Countdown</h3>
+                <p>Precision event timer</p>
+            </div>
+            <div class="app-card" onclick="showApp('darkmode')">
+                <div class="app-icon" style="background: #ede9fe;">🌙</div>
+                <h3>Dark Mode</h3>
+                <p>Theme switching utility</p>
+            </div>
+            <div class="app-card" onclick="showApp('calculator')">
+                <div class="app-icon" style="background: #fef3c7;">🔢</div>
+                <h3>Calculator</h3>
+                <p>Minimalist mathematical tool</p>
+            </div>
+        </div>
+        <div id="app-color" class="app-view">
+            <h2>Color Changer</h2>
+            <div class="divider"></div>
+            <p style="color: var(--muted); margin-bottom: 1.5rem;">Click the button to generate random colors</p>
+            <button class="color-btn" onclick="changeColor()">Generate Color</button>
+            <p id="color-text" style="margin-top: 1rem; font-weight: 500; color: var(--primary);"></p>
+        </div>
+        <div id="app-popup" class="app-view">
+            <h2>Popup Notify</h2>
+            <div class="divider"></div>
+            <div class="popup-demo" id="popup-container"></div>
+            <div class="popup-controls">
+                <button class="popup-btn" onclick="showToast('success')">Success</button>
+                <button class="popup-btn" onclick="showToast('error')">Error</button>
+                <button class="popup-btn" onclick="showToast('info')">Info</button>
+            </div>
+        </div>
+        <div id="app-countdown" class="app-view">
+            <h2>Countdown Timer</h2>
+            <div class="divider"></div>
+            <input type="number" class="countdown-input" id="countdown-input" value="10" min="1" max="999">
+            <div class="countdown-display" id="countdown-display">00:10</div>
+            <div class="countdown-controls">
+                <button class="countdown-btn primary" onclick="startCountdown()">Start</button>
+                <button class="countdown-btn secondary" onclick="resetCountdown()">Reset</button>
+            </div>
+        </div>
+        <div id="app-darkmode" class="app-view">
+            <h2>Dark Mode Toggle</h2>
+            <div class="divider"></div>
+            <div class="dark-demo">
+                <p style="margin-bottom: 1.5rem;">Toggle the switch to change themes</p>
+                <label class="toggle-switch">
+                    <input type="checkbox" onchange="toggleTheme(this.checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+                <p id="theme-status" style="margin-top: 1rem; color: var(--muted);">Light Mode</p>
+            </div>
+        </div>
+        <div id="app-calculator" class="app-view">
+            <h2>Calculator</h2>
+            <div class="divider"></div>
+            <div class="calculator">
+                <div class="calc-display" id="calc-display">0</div>
+                <button class="calc-btn clear" onclick="calcClear()">C</button>
+                <button class="calc-btn operator" onclick="calcInput('/')">÷</button>
+                <button class="calc-btn operator" onclick="calcInput('*')">×</button>
+                <button class="calc-btn operator" onclick="calcInput('-')">−</button>
+                <button class="calc-btn number" onclick="calcInput('7')">7</button>
+                <button class="calc-btn number" onclick="calcInput('8')">8</button>
+                <button class="calc-btn number" onclick="calcInput('9')">9</button>
+                <button class="calc-btn operator" onclick="calcInput('+')">+</button>
+                <button class="calc-btn number" onclick="calcInput('4')">4</button>
+                <button class="calc-btn number" onclick="calcInput('5')">5</button>
+                <button class="calc-btn number" onclick="calcInput('6')">6</button>
+                <button class="calc-btn equals" onclick="calcEquals()" style="grid-row: span 2;">=</button>
+                <button class="calc-btn number" onclick="calcInput('1')">1</button>
+                <button class="calc-btn number" onclick="calcInput('2')">2</button>
+                <button class="calc-btn number" onclick="calcInput('3')">3</button>
+                <button class="calc-btn number" onclick="calcInput('0')" style="grid-column: span 2;">0</button>
+                <button class="calc-btn number" onclick="calcInput('.')">.</button>
+            </div>
+        </div>
+    </main>
+    <footer>© 2026 Fun Labs • Mini Apps Collection</footer>
+    <script>
+        function showHub() { document.getElementById('hub-view').style.display = 'grid'; document.querySelectorAll('.app-view').forEach(el => el.classList.remove('active')); document.querySelector('.back-btn').style.display = 'none'; }
+        function showApp(appName) { document.getElementById('hub-view').style.display = 'none'; document.getElementById('app-' + appName).classList.add('active'); document.querySelector('.back-btn').style.display = 'block'; }
+        const colorMessages = ["Great work!", "Keep it coming!", "That's the spirit!", "One more time!", "You're doing great!", "It's cool isn't it?", "You can't stop!", "It's like magic!", "That's a great color!"];
+        function changeColor() { const hue = Math.random() * 360; document.body.style.backgroundColor = `hsla(${hue}, 70%, 95%, 1)`; document.getElementById('color-text').textContent = colorMessages[Math.floor(Math.random() * colorMessages.length)]; }
+        function showToast(type) { const container = document.getElementById('popup-container'); const toast = document.createElement('div'); toast.className = 'toast ' + type; const messages = {success: 'Operation completed successfully!', error: 'Something went wrong. Please try again.', info: 'This is an informational message.'}; toast.textContent = messages[type]; container.insertBefore(toast, container.firstChild); setTimeout(() => toast.remove(), 3000); }
+        let countdownInterval = null;
+        function startCountdown() { if (countdownInterval) return; let seconds = parseInt(document.getElementById('countdown-input').value) || 10; const display = document.getElementById('countdown-display'); countdownInterval = setInterval(() => { if (seconds <= 0) { clearInterval(countdownInterval); countdownInterval = null; display.textContent = '00:00'; showToast('success'); return; } seconds--; display.textContent = '00:' + seconds.toString().padStart(2, '0'); }, 1000); }
+        function resetCountdown() { clearInterval(countdownInterval); countdownInterval = null; const seconds = parseInt(document.getElementById('countdown-input').value) || 10; document.getElementById('countdown-display').textContent = '00:' + seconds.toString().padStart(2, '0'); }
+        function toggleTheme(isDark) { document.body.style.background = isDark ? '#0f172a' : '#f8fafc'; document.body.style.color = isDark ? '#f8fafc' : '#0f172a'; document.querySelector('header').style.background = isDark ? '#1e293b' : '#ffffff'; document.querySelector('header').style.borderColor = isDark ? '#334155' : '#e2e8f0'; document.getElementById('theme-status').textContent = isDark ? 'Dark Mode' : 'Light Mode'; }
+        let calcExpression = '';
+        function calcInput(value) { if (calcExpression === 'Error') calcExpression = ''; calcExpression += value; document.getElementById('calc-display').textContent = calcExpression; }
+        function calcClear() { calcExpression = ''; document.getElementById('calc-display').textContent = '0'; }
+        function calcEquals() { try { calcExpression = eval(calcExpression).toString(); document.getElementById('calc-display').textContent = calcExpression; } catch { document.getElementById('calc-display').textContent = 'Error'; calcExpression = ''; } }
+    </script>
 </body>
-
 </html>
